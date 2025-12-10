@@ -1,0 +1,49 @@
+.about-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.section-title {
+  font-family: var(--fonte-principal);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 2rem;
+}
+
+.body-text {
+  font-family: var(--fonte-principal);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+/* Lista de Skills */
+.about-skills {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.claro .about-skills { border-left: 1px solid rgba(0, 0, 0, 0.1); }
+
+.mono-title {
+  font-family: var(--fonte-mono);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+.skills-list li {
+  font-family: var(--fonte-mono);
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.mt-4 { margin-top: 2rem; }
