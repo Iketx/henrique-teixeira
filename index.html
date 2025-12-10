@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henrique Teixeira: Cientista de Dados</title>
+    <title>Henrique Teixeira | Data Scientist</title>
+    
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,126 +12,229 @@
 </head>
 <body>
     <div id="bg-global"></div>
-    
+
+    <!-- SVG DEFS (Otimização para os Cards) -->
+    <svg style="display: none;">
+        <defs>
+            <filter id="paper-texture-filter" x="-3" y="-3" width="321" height="507" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="3" dy="4"/>
+                <feGaussianBlur stdDeviation="3"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.85 0 0 0 0 0.85 0 0 0 0 0.85 0 0 0 0.5 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="dropShadow"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="dropShadow" result="shape"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" seed="9724"/>
+                <feDisplacementMap in="shape" scale="6" xChannelSelector="R" yChannelSelector="G" result="displacedImage"/>
+                <feMerge><feMergeNode in="displacedImage"/></feMerge>
+            </filter>
+        </defs>
+    </svg>
+
     <header>
         <nav>
             <ul>
-                <li><a href="#SobreMim">Sobre Mim</a></li>
-                <li><a href="#Formacao">Formação</a></li>
-                <li><a href="#Portfolio">Portfólio</a></li>
-                <li><a href="#Contato">Contato</a></li>
+                <li><a href="#hero">Hello n' welcome!</a></li>
+                <li><a href="#about">Sobre Mim</a></li>
+                <li><a href="#education">Formação</a></li>
+                <li><a href="#projects">Portfólio</a></li>
+                <li><a href="#contact">Contato</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="Hero" class="slide">
-            <div class="hero_area">
+        <section id="hero" class="slide light-theme hero-grid-layout">
+            <div class="hero-area">
                 <div class="hero-text-wrapper">        
-                    <h1>
-                        Henrique Teixeira:
-                    </h1>
-                    <h2>
-                        Transformo Dados em Decisões e Caos em Automação.
-                    </h2>
+                    <h1>Henrique Teixeira:</h1>
+                    <h2>Transformo Dados em Decisões e Caos em Automação.</h2>
                     <p>
                         Cientista de Dados com background em Economia e Empreendedorismo. Especialista em criar soluções de IA Viável (Green AI), automação de processos e inteligência de negócios.
                     </p>
                 </div>
             </div>
         </section>
-        <section id="SobreMim" class="slide escuro">
-            <div class="esquerda">
-                <img src="assets/Moço Bonito.png" alt="Minha Foto"></img>
-            </div>
-            <div class="direita">
-                <h2>Mais que código: Visão de Resultado</h2>
-                <p>Minha trajetória não é linear, e essa é minha maior vantagem. Sou um Cientista de Dados forjado na realidade do empreendedorismo e da gestão de crises.</p>
-                <p>Antes de treinar modelos de Inteligência Artificial, aprendi a gerir a ineficiência do mundo real: fundei negócios, pivotei estratégias e gerenciei P&L (Lucros e Perdas) em ambientes de alta pressão. Essa vivência me ensinou que dados sem viabilidade econômica são apenas ruído.</p>
-                <p>Hoje, combino essa visão de dono com competências técnicas avançadas (Python, Green AI, Automação) para criar soluções que não são apenas tecnicamente robustas, mas financeiramente sustentáveis e soberanas.</p>
+
+        <!-- SOBRE MIM -->
+        <section id="about" class="slide dark-theme">
+            <div class="container split-layout">
+                <div class="col-visual">
+                    <img src="assets/Moço Bonito.png" alt="Foto de Henrique Teixeira" class="profile-photo">
+                </div>
+                <div class="col-text">
+                    <h2>Mais que código: Visão de Resultado</h2>
+                    <p>Minha trajetória não é linear, e essa é minha maior vantagem. Sou um Cientista de Dados forjado na realidade do empreendedorismo e da gestão de crises.</p>
+                    <p>Antes de treinar modelos de Inteligência Artificial, aprendi a gerir a ineficiência do mundo real: fundei negócios, pivotei estratégias e gerenciei P&L. Essa vivência me ensinou que dados sem viabilidade econômica são apenas ruído.</p>
+                    <p>Hoje, combino essa visão de dono com competências técnicas avançadas (Python, Green AI, Automação) para criar soluções que não são apenas tecnicamente robustas, mas financeiramente sustentáveis e soberanas.</p>
+                </div>
             </div>
         </section>
-        <section id="Formacao" class="slide claro">
-            <div class="esquerda">
-                <h3>
-                    Ciencias Economicas - UFMG
-                </h3>
-                <span>
-                    2011 - 2015
-                </span>
-                <h3>
-                    Técnologia em Ciência de Dados - Uninter
-                </h3>
-                <span>
-                    2025 - 2027
-                </span>
-                <h3>
-                    Professional Certificate - IBM Data Science
-                </h3>
-                <span>
-                    2019 - 2020
-                </span>
-                <a href="https://www.credly.com/users/htex/badges#credly" target="_blank" rel="noopener noreferrer">
-                    Verifique minhas certificações aqui
-                </a>
-            </div>
-            <div class="direita">
-                <h2>Core Data Science</h2>
-                <div class="core-data-science">
-                    <img src="assets/python-logo-only.png" alt="Pyrhon Logo" style="width: 5.1955rem; height: 6.29638rem; aspect-ratio: 83.13/100.74;">
-                    <img src="assets/pandas_secondary.svg" alt="Pandas Logo" style="width: 8.95125rem; height: 6.3125rem;">
-                    <img src="assets/numpylogoicon.png" alt="Numpy Logo" style="width: 6.32225rem; height: 6.32225rem; aspect-ratio: 101.16/101.16;">
-                    <img src="assets/Scikit_learn_logo_small.svg" alt="Scikit Learn Logo" style="width: 11.7055rem; height: 6.3125rem;">
-                </div>
-                <h2>AI & LLMs</h2>
-                <div class="ai-llm">
-                    <img src="assets/LangChain_Logo.svg" alt="LangChain Logo" style="width: 16.66163rem; height: 2.84306rem;">
-                    <img src="assets/OpenAI_logo_2025_(symbol).svg.png" alt="OpenAI Logo" style="width: 2.95506rem; height: 2.932rem; aspect-ratio: 47.28/46.91;">
-                    <img src="assets/DeepSeek_logo.svg" alt="DeepSeek Logo" style="width: 13.4195rem; height: 2.84306rem;">
-                    <img src="assets/Gemini_sparkle_v002.svg" alt="Gemini Logo" style="width: 2.932rem; height: 2.9275rem;">
-                </div>
-                <h2>Automação & Cloud</h2>
-                <div class="automacao-cloud">
-                    <img src="assets/Django_logo.svg.png" alt="Django Logo" style="width: 7.98219rem; height: 2.78169rem; aspect-ratio: 127.72/44.51;">
-                    <img src="assets/N8n-logo-new.svg.png" alt="N8n Logo" style="width: 6.95419rem; width: 6.95419rem; aspect-ratio: 111.27/44.51;">
-                    <img src="assets/Azure_SQL_cloud_icon.svg.png" alt="SQL LOGO" style="width: 2.78169rem; height: 2.78169rem; aspect-ratio: 44.51/44.51;">
-                    <img src="assets/Google_Cloud_logo.svg" alt="GDC Logo" style="width: 17.92006rem; height: 2.78131rem; aspect-ratio: 286.72/44.50;">
-                </div>
-                <a href="https://www.credly.com/users/htex/skills">Verifique minhas habilidades aqui</a>
-            </div>
-        </section>
-        <section id="Portfolio" class="slide escuro">
-            <div class="portfolio">
-                <div class="card">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="309" height="494" viewBox="0 0 309 494" fill="none">
-                        <g filter="url(#filter0_dg_16_321)">
-                            <rect width="309" height="494" fill="#D9D9D9"/>
-                        </g>
-                        <defs>
-                            <filter id="filter0_dg_16_321" x="-3" y="-3" width="321" height="507" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="3" dy="4"/>
-                                <feGaussianBlur stdDeviation="3"/>
-                                <feComposite in2="hardAlpha" operator="out"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.5 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_16_321"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_16_321" result="shape"/>
-                                <feTurbulence type="fractalNoise" baseFrequency="0.10000000149011612 0.10000000149011612" numOctaves="3" seed="9724"/>
-                                <feDisplacementMap in="shape" scale="6" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%"/>
-                                <feMerge result="effect2_texture_16_321">
-                                    <feMergeNode in="displacedImage"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                    </svg>
+
+        <!-- FORMAÇÃO -->
+        <section id="education" class="slide light-theme">
+            <div class="container split-layout align-top">
+                
+                <!-- Coluna Esquerda: Acadêmico -->
+                <div class="col-list">
+                    <div class="edu-item">
+                        <h3>Ciências Econômicas - UFMG</h3>
+                        <span>2011 - 2015</span>
+                    </div>
+                    <div class="edu-item">
+                        <h3>Tecnologia em Ciência de Dados - Uninter</h3>
+                        <span>2025 - 2027</span>
+                    </div>
+                    <div class="edu-item">
+                        <h3>Professional Certificate - IBM Data Science</h3>
+                        <span>2019 - 2020</span>
+                    </div>
+                    <!-- Botão Esquerdo -->
+                    <a href="https://www.credly.com/users/htex/badges#credly" target="_blank" class="btn-primary">
+                        Verifique minhas certificações aqui
+                    </a>
                 </div>
 
+                <!-- Coluna Direita: Stack -->
+                <div class="col-stack">
+                    <h2>Core Data Science</h2>
+                    <div class="stack-icons">
+                        <img src="assets/python-logo-only.png" alt="Python">
+                        <img src="assets/pandas_secondary.svg" alt="Pandas">
+                        <img src="assets/numpylogoicon.png" alt="Numpy">
+                        <img src="assets/Scikit_learn_logo_small.svg" alt="Scikit Learn">
+                    </div>
+
+                    <h2>AI & LLMs</h2>
+                    <div class="stack-icons">
+                        <img src="assets/LangChain_Logo.svg" alt="LangChain">
+                        <img src="assets/OpenAI_logo_2025_(symbol).svg.png" alt="OpenAI">
+                        <img src="assets/DeepSeek_logo.svg" alt="DeepSeek">
+                        <img src="assets/Gemini_sparkle_v002.svg" alt="Gemini">
+                    </div>
+
+                    <h2>Automação & Cloud</h2>
+                    <div class="stack-icons">
+                        <img src="assets/Django_logo.svg.png" alt="Django">
+                        <img src="assets/N8n-logo-new.svg.png" alt="N8n">
+                        <img src="assets/Azure_SQL_cloud_icon.svg.png" alt="SQL">
+                        <img src="assets/Google_Cloud_logo.svg" alt="GCP">
+                    </div>
+                    
+                    <!-- Botão Direito -->
+                    <a href="https://www.credly.com/users/htex/skills" target="_blank" class="btn-primary">
+                        Verifique minhas habilidades aqui
+                    </a>
+                </div>
             </div>
         </section>
-        <section id="Contato" class="slide claro"><h2>Contato</h2></section>
+        <!-- PORTFÓLIO -->
+        <section id="projects" class="slide dark-theme">
+            <div class="container">
+                <div class="portfolio-grid">
+                    
+                    <!-- Card 1: Green AI -->
+                    <div class="card" data-project="green-ai">
+                        <svg class="card-bg" viewBox="0 0 309 494" fill="none">
+                            <g filter="url(#paper-texture-filter)">
+                                <rect width="309" height="494" fill="#D9D9D9"/>
+                            </g>
+                        </svg>
+                        <div class="card-content">
+                            <h3>Green AI & Soberania Digital</h3>
+                            <span class="tags">Pesquisa | Edge Computing | LLM Optimization</span>
+                            <p>Como escapar da "Bolha dos Tokens" criando IAs eficientes, sustentáveis e independentes de Big Techs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: BACO -->
+                    <div class="card" data-project="baco-uno">
+                        <svg class="card-bg" viewBox="0 0 309 494" fill="none">
+                            <g filter="url(#paper-texture-filter)">
+                                <rect width="309" height="494" fill="#D9D9D9"/>
+                            </g>
+                        </svg>
+                        <div class="card-content">
+                            <h3>O Paradoxo da Escolha (BACO)</h3>
+                            <span class="tags">Startup | Sistema de Recomendação | Economia Comportamental</span>
+                            <p>Um sistema de curadoria algorítmica desenhado para combater a paralisia decisória em mercados saturados.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: D4R -->
+                    <div class="card" data-project="d4r">
+                        <svg class="card-bg" viewBox="0 0 309 494" fill="none">
+                            <g filter="url(#paper-texture-filter)">
+                                <rect width="309" height="494" fill="#D9D9D9"/>
+                            </g>
+                        </svg>
+                        <div class="card-content">
+                            <h3>Consultoria Data-Driven (D4R)</h3>
+                            <span class="tags">Business Intelligence | Transformação Digital | Automação</span>
+                            <p>Transformando PMEs analógicas em operações digitais eficientes através da cultura de dados.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="contact" class="slide light-theme">
+            <div class="container contact-container">
+                <h2>Vamos conversar?</h2>
+                <p class="contact-subtitle">Estou disponível para projetos de consultoria e colaborações em IA.</p>
+                
+                <div class="contact-links">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5531992826101" target="_blank" class="btn-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zM12.05 20.21c-1.5 0-2.97-.39-4.27-1.15l-.3-.18-3.17.83.85-3.09-.19-.31c-.86-1.39-1.31-2.98-1.31-4.63 0-4.47 3.65-8.11 8.12-8.11 2.16 0 4.19.84 5.71 2.37 1.53 1.52 2.37 3.55 2.37 5.71 0 4.47-3.66 8.12-8.13 8.12zm4.45-6.07c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.17.24-.65.79-.79.95-.15.16-.29.18-.53.06-.24-.12-1.02-.38-1.95-1.21-.73-.65-1.22-1.45-1.37-1.7-.15-.24-.02-.37.1-.49.11-.1.24-.26.36-.39.12-.13.16-.22.24-.37.08-.16.04-.29-.02-.41-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14 0-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.71 2.61 4.15 3.66 1.56.67 2.15.65 2.93.55.87-.11 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:Henrique.dtx@gmail.com" target="_blank" class="btn-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Email
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/henrique-teixeira-data-science" target="_blank" class="btn-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/Iketx" target="_blank" class="btn-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
     
+    <!-- MODAL -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <h3 id="modal-title"></h3>
+                <span id="modal-tags"></span>
+                <div id="modal-desc"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>
