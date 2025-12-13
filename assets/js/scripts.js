@@ -1,20 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // =========================================
-    // 1. SELETORES GERAIS & SETUP
-    // =========================================
+    /* =========================================
+    1. SELETORES GLOBAIS E INICIALIZAÇÃO
+    ========================================= */
+    /* Captura elementos principais para manipulação dinâmica */
     const header = document.querySelector('header');
     const bgGlobal = document.getElementById('bg-global');
     const sections = document.querySelectorAll('.slide');
     const navLinks = document.querySelectorAll('nav ul li a');
     
-    // =========================================
-    // 2. TROCA DE FUNDO E MENU ATIVO
-    // =========================================
+    /* =========================================
+    2. OBSERVADOR DE INTERSEÇÃO - TROCA DE TEMA E MENU ATIVO
+    ========================================= */
+    /* IntersectionObserver detecta seção visível e altera fundo + menu ativo */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Lógica de Cor do Fundo
+                /* Troca cor de fundo global conforme tema da seção */
                 if (entry.target.classList.contains('dark-theme')) {
                     bgGlobal.classList.add('bg-dark');
                     bgGlobal.classList.remove('bg-light');
@@ -23,23 +25,63 @@ document.addEventListener('DOMContentLoaded', () => {
                     bgGlobal.classList.remove('bg-dark');
                 }
 
-                // Lógica do Menu Ativo (Sublinhado/Caixa)
+                /* Ativa link do menu correspondente à seção visível */
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    // Verifica se o href do link combina com o ID da seção
                     if (link.getAttribute('href') === `#${entry.target.id}`) {
                         link.classList.add('active');
                     }
                 });
             }
         });
-    }, { threshold: 0.5 }); // Ativa quando 50% da seção estiver visível
+    }, { threshold: 0.5 }); /* Threshold 50%: ativa quando metade da seção está visível */
+
+    /* =========================================
+    NAVBAR SCROLL FOLLOW - Portfolio → Contato (Transição Natural)
+    ========================================= */
+    /* Navbar "sobe" suavemente conforme final do Portfolio entra na viewport */
+    const navbar = document.querySelector('header');
+    const portfolioSection = document.getElementById('projects');
+    let ticking = false;
+
+    function updateNavbarPosition() {
+        const rect = portfolioSection.getBoundingClientRect();
+        const portfolioBottom = rect.bottom;
+        const viewportHeight = window.innerHeight;
+        const navbarHeight = navbar.offsetHeight;
+        
+        let progress = 0;
+        if (portfolioBottom < viewportHeight) {
+            const overflow = viewportHeight - portfolioBottom;
+            progress = Math.max(0, Math.min(1, overflow / viewportHeight));
+        }
+        
+        const fromBottom = 40;
+        const toTop = 20;
+        const moveDistance = viewportHeight - navbarHeight - fromBottom - toTop;
+        
+        navbar.style.transform = `translateY(-${progress * moveDistance}px)`;
+        
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbarPosition);
+            ticking = true;
+        }
+    }
+
+    /* Listeners passivos para performance 60fps */
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
 
     sections.forEach(s => observer.observe(s));
 
-    // =========================================
-    // 3. CONTEÚDO DOS MODAIS
-    // =========================================
+    /* =========================================
+    3. DADOS DOS PROJETOS (Para Modais)
+    ========================================= */
+    /* Objeto com conteúdo dos 3 projetos exibido nos modais */
     const projectContent = {
         "green-ai": {
             title: "Green AI & Soberania Digital",
@@ -67,61 +109,106 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // =========================================
-    // 4. LÓGICA DO MODAL
-    // =========================================
+    /* =========================================
+    4. LÓGICA DO MODAL INTERATIVO
+    ========================================= */
     
-    // Selecionar os elementos do Modal no HTML
+    /* Seletores dos elementos do modal */
     const modal = document.getElementById('project-modal');
     const mTitle = document.getElementById('modal-title');
     const mTags = document.getElementById('modal-tags');
     const mDesc = document.getElementById('modal-desc');
     const closeBtn = document.querySelector('.modal-close');
-    const cards = document.querySelectorAll('.card'); // Seleciona todos os cards
+    const cards = document.querySelectorAll('.card'); /* Todos os cards do portfólio */
 
-    // Função para ABRIR o modal
+    /* Função para abrir modal com dados do projeto clicado */
     function openModal(projectId) {
         const data = projectContent[projectId];
         
-        // Se não achar o projeto, para por aqui
-        if(!data) return;
+        if(!data) return; /* Proteção se projeto não existir */
 
-        // Preenche o modal com os dados
+        /* Preenche conteúdo dinamicamente */
         mTitle.textContent = data.title;
         mTags.textContent = data.tags;
-        mDesc.innerHTML = data.desc; // Usa innerHTML para processar as tags <p>
+        mDesc.innerHTML = data.desc; /* innerHTML para HTML nos parágrafos */
 
-        // Mostra o modal adicionando a classe .active
-        modal.classList.add('active');
+        modal.classList.add('active'); /* Animação CSS */
     }
 
-    // Função para FECHAR o modal
+    /* Função para fechar modal */
     function closeModal() {
         modal.classList.remove('active');
     }
 
-    // Adiciona o evento de CLIQUE em cada card
+    /* Event listeners para cada card */
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // Pega o valor do atributo 'data-project' do card clicado
             const projectId = card.getAttribute('data-project');
             openModal(projectId);
         });
     });
 
-    // Eventos para fechar o modal
+    /* Fechamento do modal: botão X, clique no fundo ou ESC */
     if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
     }
     
-    // Fechar clicando no fundo escuro
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+        if (e.target === modal) closeModal(); /* Clique fora do conteúdo */
     });
 
-    // Fechar apertando ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') closeModal(); /* Tecla ESC */
     });
 
+    /* =========================================
+    5. FORMULÁRIO CONTATO - VALIDAÇÃO + SIMULAÇÃO ENVIO
+    ========================================= */
+    /* Validação client-side obrigatória pela atividade + simulação de backend */
+    
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.createElement('div');
+    formSuccess.className = 'form-success';
+    formSuccess.innerHTML = '✅ Mensagem enviada com sucesso! Em breve entrarei em contato.';
+    formSuccess.style.display = 'none';
+    
+    /* Insere mensagem de sucesso dinamicamente após botão submit */
+    const submitBtn = contactForm.querySelector('.btn-submit');
+    submitBtn.insertAdjacentElement('afterend', formSuccess);
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault(); /* Impede envio real do form */
+        
+        /* Captura e valida campos */
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        /* Validações obrigatórias (requisito da atividade) */
+        if (!name) {
+            alert('Por favor, preencha o campo Nome.');
+            return;
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; /* Regex simples para email */
+        if (!emailRegex.test(email)) {
+            alert('Por favor, insira um e-mail válido.');
+            return;
+        }
+        
+        if (!message || message.length < 10) {
+            alert('Por favor, escreva uma mensagem com pelo menos 10 caracteres.');
+            return;
+        }
+        
+        /* Simula sucesso: limpa form + mostra confirmação */
+        contactForm.reset();
+        formSuccess.style.display = 'block';
+        
+        setTimeout(() => {
+            formSuccess.style.display = 'none';
+        }, 5000); /* Auto-esconde após 5s */
+        
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
 });

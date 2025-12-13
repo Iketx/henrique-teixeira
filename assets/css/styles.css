@@ -1,6 +1,7 @@
 /* ========================================= */
-/* 1. GERAL */
+/* 1. VARIÁVEIS CSS GLOBAIS (Custom Properties) */
 /* ========================================= */
+/* Definição das cores principais e fontes usadas em todo o site para fácil manutenção */
 :root {
   --bg-claro: #F3EEE0;
   --bg-escuro: #1F1C14;
@@ -32,13 +33,14 @@ ul { list-style: none; }
 .bg-dark { background-color: var(--bg-escuro) !important; }
 
 /* ========================================= */
-/* 2. ESTRUTURA DE SLIDES */
+/* 2. ESTRUTURA DAS SEÇÕES (SLIDES FULLSCREEN) */
 /* ========================================= */
+/* Cada seção ocupa 100vh para navegação single-page suave */
 .slide {
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
-  /* Padding padrão apenas para slides que NÃO são o Hero */
+  /* Padding lateral padrão (exceto Hero) para centralização do conteúdo */
   padding: 0 5%; 
   display: flex;
   flex-direction: column;
@@ -52,12 +54,13 @@ ul { list-style: none; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; }
 
 /* ========================================= */
-/* 3. HERO */
+/* 3. SEÇÃO HERO (Página Inicial) */
 /* ========================================= */
+/* Layout em grid especial para tipografia responsiva baseada em VH */
 #hero.hero-grid-layout {
-    padding: 0; /* Hero não tem padding lateral padrão, usa grid */
+    padding: 0; /* Sem padding lateral - usa grid para posicionamento preciso */
     display: grid;
-    grid-template-rows: 1fr 120px; /* 120px reservado pro menu */
+    grid-template-rows: 1fr 120px; /* Espaço reservado para navbar inferior */
     grid-auto-columns: 1fr;
     grid-auto-flow: row;
 }
@@ -115,8 +118,9 @@ ul { list-style: none; }
 }
 
 /* ========================================= */
-/* 4. SOBRE MIM & FORMAÇÃO */
+/* 4. LAYOUTS EM DUAS COLUNAS (Sobre Mim e Formação) */
 /* ========================================= */
+/* Grid 50/50 para seções com imagem + texto ou listas */
 .split-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -178,8 +182,9 @@ ul { list-style: none; }
 .btn-primary:hover { opacity: 0.9; }
 
 /* ========================================= */
-/* 5. PORTFOLIO */
+/* 5. GRID DE CARDS DO PORTFÓLIO */
 /* ========================================= */
+/* Cards clicáveis com SVG texturizado e modais */
 .portfolio-grid {
     display: flex;
     justify-content: center;
@@ -216,12 +221,26 @@ ul { list-style: none; }
 .card-content p { font-size: 0.95rem; font-weight: 500; }
 
 /* ========================================= */
-/* 6. NAVBAR FLUTUANTE */
+/* 6. NAVBAR FIXA RESPONSIVA (Bottom → Top) */
 /* ========================================= */
+/* Transição suave durante scroll Portfolio → Contato */
 header {
-  position: fixed; bottom: 40px; left: 0; width: 100%; z-index: 1000;
-  display: flex; justify-content: center;
-  mix-blend-mode: difference; color: #fff;
+  position: fixed; 
+  bottom: 40px; 
+  top: auto;
+  left: 0; 
+  width: 100%; 
+  z-index: 1000;
+  display: flex; 
+  justify-content: center;
+  mix-blend-mode: difference; /* Inverte cores conforme fundo */
+  color: #fff;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+header.navbar-top {
+  bottom: auto;
+  top: 20px;
 }
 nav ul { display: flex; gap: 1.5rem; }
 nav a {
@@ -237,7 +256,7 @@ nav a:hover:not(.active)::after { width: calc(100% - 32px); }
 nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700; }
 
 /* ========================================= */
-/* 7. MODAL */
+/* 7. MODAL INTERATIVO (Detalhes Projetos) */
 /* ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -267,22 +286,29 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     .stack-icons { justify-content: center; gap: 2rem; }
 }
 /* ========================================= */
-/* 8. CONTATO */
+/* 8. SEÇÃO CONTATO (Layout Flex Completo) */
 /* ========================================= */
 .contact-container {
     text-align: center;
     max-width: 800px;
+    height: calc(100vh - 160px); /* Ajuste para navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem 0;
+    box-sizing: border-box;
 }
 
 .contact-container h2 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .contact-subtitle {
     font-family: var(--font-mono);
     font-size: 1.1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     opacity: 0.8;
 }
 
@@ -290,15 +316,15 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .btn-contact {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    padding: 1rem;
+    width: 170px;
+    padding: 0.8rem;
     
     /* Estilo Visual */
     background-color: transparent;
@@ -324,6 +350,121 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
 /* Responsividade Contato */
 @media (max-width: 600px) {
     .contact-container h2 { font-size: 2.2rem; }
-    .contact-links { flex-direction: column; align-items: center; }
+    .contact-links { flex-direction: column; align-items: center; margin-top: 2rem; }
     .btn-contact { width: 100%; max-width: 300px; }
+}
+
+/* ========================================= */
+/* 9. FORMULÁRIO VALIDADO COM JS */
+/* ========================================= */
+
+.contact-form {
+    max-width: 850px;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--texto-escuro);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    border: 2px solid var(--texto-escuro);
+    background: transparent;
+    color: var(--texto-escuro);
+    border-radius: 0;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+}
+
+.btn-submit {
+    background: var(--texto-escuro);
+    color: var(--texto-claro) !important;
+    border: none;
+    padding: 1.2rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+}
+
+.btn-submit:hover {
+    background: #111;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(-1px);
+}
+
+/* Mensagem de sucesso (será mostrada via JS) */
+.form-success {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    display: none;
+    font-family: var(--font-mono);
+    text-align: center;
+}
+
+/* Responsivo para Formulário */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 0 2rem;
+        gap: 1.25rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 1.1rem;
+        font-size: 1rem;
+    }
 }
