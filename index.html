@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 <body>
     <div id="bg-global"></div>
 
-    <!-- Definições SVG ocultas: Filtro de textura para otimização visual dos cards do portfólio -->
+    <!-- Hidden SVG definitions: Texture filter for portfolio card visual optimization -->
     <svg style="display: none;">
         <defs>
             <filter id="paper-texture-filter" x="-3" y="-3" width="321" height="507" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -32,15 +32,20 @@
         </defs>
     </svg>
 
-    <!-- Cabeçalho com menu de navegação fixa (bottom/top responsivo) -->
+    <!-- Header with fixed navigation menu (responsive bottom/top) -->
     <header>
         <nav>
             <ul>
-                <li><a href="#hero">Olá e bem-vindo!</a></li>
-                <li><a href="#about">Sobre Mim</a></li>
-                <li><a href="#education">Formação</a></li>
-                <li><a href="#projects">Portfólio</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#hero" data-i18n="nav.hero">Olá e bem-vindo!</a></li>
+                <li><a href="#about" data-i18n="nav.about">Sobre Mim</a></li>
+                <li><a href="#education" data-i18n="nav.education">Formação</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Portfólio</a></li>
+                                <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+                <li class="lang-switcher">
+                    <button id="lang-pt" onclick="i18n.setLanguage('pt')">PT</button>
+                    <span style="opacity: 0.5;">|</span>
+                    <button id="lang-en" onclick="i18n.setLanguage('en')">EN</button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -49,57 +54,57 @@
         <section id="hero" class="slide light-theme hero-grid-layout">
             <div class="hero-area">
                 <div class="hero-text-wrapper">        
-                    <h1>Henrique Teixeira:</h1>
-                    <h2>Transformo Dados em Decisões e Caos em Automação.</h2>
-                    <p>
+                    <h1 data-i18n="hero.h1">Henrique Teixeira:</h1>
+                    <h2 data-i18n="hero.h2">Transformo Dados em Decisões e Caos em Automação.</h2>
+                    <p data-i18n="hero.p">
                         Cientista de Dados com background em Economia e Empreendedorismo. Especialista em criar soluções de IA Viável (Green AI), automação de processos e inteligência de negócios.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Seção Sobre Mim: Apresentação pessoal e trajetória profissional -->
+        <!-- About Me Section: Personal presentation and professional journey -->
         <section id="about" class="slide dark-theme">
             <div class="container split-layout">
                 <div class="col-visual">
                     <img src="assets/Moço Bonito.png" alt="Foto de Henrique Teixeira - Perfil profissional" class="profile-photo">
                 </div>
                 <div class="col-text">
-                    <h2>Mais que código: Visão de Resultado</h2>
-                    <p>Minha trajetória não é linear, e essa é minha maior vantagem. Sou um Cientista de Dados forjado na realidade do empreendedorismo e da gestão de crises.</p>
-                    <p>Antes de treinar modelos de Inteligência Artificial, aprendi a gerir a ineficiência do mundo real: fundei negócios, pivotei estratégias e gerenciei P&L. Essa vivência me ensinou que dados sem viabilidade econômica são apenas ruído.</p>
-                    <p>Hoje, combino essa visão de dono com competências técnicas avançadas (Python, Green AI, Automação) para criar soluções que não são apenas tecnicamente robustas, mas financeiramente sustentáveis e soberanas.</p>
+                    <h2 data-i18n="about.h2">Mais que código: Visão de Resultado</h2>
+                    <p data-i18n="about.p1">Minha trajetória não é linear, e essa é minha maior vantagem. Sou um Cientista de Dados forjado na realidade do empreendedorismo e da gestão de crises.</p>
+                    <p data-i18n="about.p2">Antes de treinar modelos de Inteligência Artificial, aprendi a gerir a ineficiência do mundo real: fundei negócios, pivotei estratégias e gerenciei P&L. Essa vivência me ensinou que dados sem viabilidade econômica são apenas ruído.</p>
+                    <p data-i18n="about.p3">Hoje, combino essa visão de dono com competências técnicas avançadas (Python, Green AI, Automação) para criar soluções que não são apenas tecnicamente robustas, mas financeiramente sustentáveis e soberanas.</p>
                 </div>
             </div>
         </section>
 
-        <!-- FORMAÇÃO -->
+        <!-- EDUCATION -->
         <section id="education" class="slide light-theme">
             <div class="container split-layout align-top">
                 
-                <!-- Coluna Esquerda: Acadêmico -->
+                <!-- Left Column: Academic -->
                 <div class="col-list">
                     <div class="edu-item">
-                        <h3>Ciências Econômicas - UFMG</h3>
+                        <h3 data-i18n="edu.ufmg">Ciências Econômicas - UFMG</h3>
                         <span>2011 - 2015</span>
                     </div>
                     <div class="edu-item">
-                        <h3>Tecnologia em Ciência de Dados - Uninter</h3>
+                        <h3 data-i18n="edu.uninter">Tecnologia em Ciência de Dados - Uninter</h3>
                         <span>2025 - 2027</span>
                     </div>
                     <div class="edu-item">
-                        <h3>Professional Certificate - IBM Data Science</h3>
+                        <h3 data-i18n="edu.ibm">Professional Certificate - IBM Data Science</h3>
                         <span>2019 - 2020</span>
                     </div>
-                    <!-- Botão Esquerdo -->
+                    <!-- Left Button -->
                     <a href="https://www.credly.com/users/htex/badges#credly" target="_blank" class="btn-primary">
-                        Verifique minhas certificações aqui
+                        <span data-i18n="edu.btn1">Verifique minhas certificações aqui</span>
                     </a>
                 </div>
 
-                <!-- Coluna Direita: Stack -->
+                <!-- Right Column: Tech Stack -->
                 <div class="col-stack">
-                    <h2>Core Data Science</h2>
+                    <h2 data-i18n="edu.core">Core Data Science</h2>
                     <div class="stack-icons">
                         <img src="assets/python-logo-only.png" alt="Python">
                         <img src="assets/pandas_secondary.svg" alt="Pandas">
@@ -107,7 +112,7 @@
                         <img src="assets/Scikit_learn_logo_small.svg" alt="Scikit Learn">
                     </div>
 
-                    <h2>AI & LLMs</h2>
+                    <h2 data-i18n="edu.ai">AI & LLMs</h2>
                     <div class="stack-icons">
                         <img src="assets/LangChain_Logo.svg" alt="LangChain">
                         <img src="assets/OpenAI_logo_2025_(symbol).svg.png" alt="OpenAI">
@@ -115,7 +120,7 @@
                         <img src="assets/Gemini_sparkle_v002.svg" alt="Gemini">
                     </div>
 
-                    <h2>Automação & Cloud</h2>
+                    <h2 data-i18n="edu.cloud">Automação & Cloud</h2>
                     <div class="stack-icons">
                         <img src="assets/Django_logo.svg.png" alt="Django">
                         <img src="assets/N8n-logo-new.svg.png" alt="N8n">
@@ -123,14 +128,14 @@
                         <img src="assets/Google_Cloud_logo.svg" alt="GCP">
                     </div>
                     
-                    <!-- Botão Direito -->
+                    <!-- Right Button -->
                     <a href="https://www.credly.com/users/htex/skills" target="_blank" class="btn-primary">
-                        Verifique minhas habilidades aqui
+                        <span data-i18n="edu.btn2">Verifique minhas habilidades aqui</span>
                     </a>
                 </div>
             </div>
         </section>
-        <!-- Seção Portfólio: Projetos e trabalhos realizados com modais interativos -->
+        <!-- Portfolio Section: Projects with interactive modals -->
         <section id="projects" class="slide dark-theme">
             <div class="container">
                 <div class="portfolio-grid">
@@ -143,9 +148,9 @@
                             </g>
                         </svg>
                         <div class="card-content">
-                            <h3>Green AI & Soberania Digital</h3>
-                            <span class="tags">Pesquisa | Edge Computing | LLM Optimization</span>
-                            <p>Como escapar da "Bolha dos Tokens" criando IAs eficientes, sustentáveis e independentes de Big Techs.</p>
+                            <h3 data-i18n="proj.green.h3">Green AI & Soberania Digital</h3>
+                            <span class="tags" data-i18n="proj.green.tags">Pesquisa | Edge Computing | LLM Optimization</span>
+                            <p data-i18n="proj.green.p">Como escapar da "Bolha dos Tokens" criando IAs eficientes, sustentáveis e independentes de Big Techs.</p>
                         </div>
                     </div>
 
@@ -157,9 +162,9 @@
                             </g>
                         </svg>
                         <div class="card-content">
-                            <h3>O Paradoxo da Escolha (BACO)</h3>
-                            <span class="tags">Startup | Sistema de Recomendação | Economia Comportamental</span>
-                            <p>Um sistema de curadoria algorítmica desenhado para combater a paralisia decisória em mercados saturados.</p>
+                            <h3 data-i18n="proj.baco.h3">O Paradoxo da Escolha (BACO)</h3>
+                            <span class="tags" data-i18n="proj.baco.tags">Startup | Sistema de Recomendação | Economia Comportamental</span>
+                            <p data-i18n="proj.baco.p">Um sistema de curadoria algorítmica desenhado para combater a paralisia decisória em mercados saturados.</p>
                         </div>
                     </div>
 
@@ -171,9 +176,9 @@
                             </g>
                         </svg>
                         <div class="card-content">
-                            <h3>Consultoria Data-Driven (D4R)</h3>
-                            <span class="tags">Business Intelligence | Transformação Digital | Automação</span>
-                            <p>Transformando PMEs analógicas em operações digitais eficientes através da cultura de dados.</p>
+                            <h3 data-i18n="proj.d4r.h3">Consultoria Data-Driven (D4R)</h3>
+                            <span class="tags" data-i18n="proj.d4r.tags">Business Intelligence | Transformação Digital | Automação</span>
+                            <p data-i18n="proj.d4r.p">Transformando PMEs analógicas em operações digitais eficientes através da cultura de dados.</p>
                         </div>
                     </div>
 
@@ -181,26 +186,27 @@
             </div>
         </section>
 
-        <!-- Seção Contato: Formulário validado com JS + links sociais -->
+        <!-- Contact Section: JS-validated form + social links -->
         <section id="contact" class="slide light-theme">
             <div class="container contact-container">
-                <h2>Vamos conversar?</h2>
-                <p class="contact-subtitle">Estou disponível para projetos de consultoria e colaborações em IA.</p>
+                <h2 data-i18n="contact.h2">Vamos conversar?</h2>
+                <p class="contact-subtitle" data-i18n="contact.p">Estou disponível para projetos de consultoria e colaborações em IA.</p>
                 
-                <form id="contact-form" class="contact-form">
+                <!-- Contact form connected to Formspree — endpoint: mpqvpbjq -->
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/mpqvpbjq" method="POST">
                     <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" placeholder="Seu Nome Completo" required>
+                        <label for="name" data-i18n="contact.label.name">Nome:</label>
+                        <input type="text" id="name" name="name" placeholder="Seu Nome Completo" data-i18n="contact.placeholder.name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        <label for="email" data-i18n="contact.label.email">E-mail:</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" data-i18n="contact.placeholder.email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Mensagem:</label>
-                        <textarea id="message" name="message" placeholder="Digite sua mensagem aqui..." rows="6" required></textarea>
+                        <label for="message" data-i18n="contact.label.message">Mensagem:</label>
+                        <textarea id="message" name="message" placeholder="Digite sua mensagem aqui..." data-i18n="contact.placeholder.message" rows="6" required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    <button type="submit" class="btn-submit" data-i18n="contact.btn">Enviar Mensagem</button>
                 </form>
                 
                 <div class="contact-links">
@@ -209,7 +215,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zM12.05 20.21c-1.5 0-2.97-.39-4.27-1.15l-.3-.18-3.17.83.85-3.09-.19-.31c-.86-1.39-1.31-2.98-1.31-4.63 0-4.47 3.65-8.11 8.12-8.11 2.16 0 4.19.84 5.71 2.37 1.53 1.52 2.37 3.55 2.37 5.71 0 4.47-3.66 8.12-8.13 8.12zm4.45-6.07c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.17.24-.65.79-.79.95-.15.16-.29.18-.53.06-.24-.12-1.02-.38-1.95-1.21-.73-.65-1.22-1.45-1.37-1.7-.15-.24-.02-.37.1-.49.11-.1.24-.26.36-.39.12-.13.16-.22.24-.37.08-.16.04-.29-.02-.41-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14 0-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.71 2.61 4.15 3.66 1.56.67 2.15.65 2.93.55.87-.11 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/>
                         </svg>
-                        WhatsApp
+                        <span data-i18n="contact.whatsapp">WhatsApp</span>
                     </a>
 
                     <!-- Email -->
@@ -217,7 +223,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
-                        Email
+                        <span data-i18n="contact.email">Email</span>
                     </a>
 
                     <!-- LinkedIn -->
@@ -225,7 +231,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
                         </svg>
-                        LinkedIn
+                        <span data-i18n="contact.linkedin">LinkedIn</span>
                     </a>
 
                     <!-- GitHub -->
@@ -233,14 +239,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
                         </svg>
-                        GitHub
+                        <span data-i18n="contact.github">GitHub</span>
                     </a>
                 </div>
             </div>
         </section>
     </main>
     
-    <!-- Modal interativo para detalhes dos projetos do portfólio -->
+    <!-- Interactive modal for portfolio project details -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close">&times;</button>
@@ -252,7 +258,8 @@
         </div>
     </div>
 
-    <!-- Script principal com navegação suave, modais e validação de formulário -->
+    <!-- Core scripts: i18n, smooth navigation, modals, and form validation -->
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>

@@ -1,22 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await window.i18n.init();
+
     
     /* =========================================
-    1. SELETORES GLOBAIS E INICIALIZAÇÃO
+    1. GLOBAL SELECTORS AND INITIALIZATION
     ========================================= */
-    /* Captura elementos principais para manipulação dinâmica */
+    /* Capture main elements for dynamic manipulation */
     const header = document.querySelector('header');
     const bgGlobal = document.getElementById('bg-global');
     const sections = document.querySelectorAll('.slide');
     const navLinks = document.querySelectorAll('nav ul li a');
     
     /* =========================================
-    2. OBSERVADOR DE INTERSEÇÃO - TROCA DE TEMA E MENU ATIVO
+    2. INTERSECTION OBSERVER - THEME SWITCH & ACTIVE MENU
     ========================================= */
-    /* IntersectionObserver detecta seção visível e altera fundo + menu ativo */
+    /* IntersectionObserver detects visible section and changes background + active menu */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                /* Troca cor de fundo global conforme tema da seção */
+                /* Switch global background color based on section theme */
                 if (entry.target.classList.contains('dark-theme')) {
                     bgGlobal.classList.add('bg-dark');
                     bgGlobal.classList.remove('bg-light');
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     bgGlobal.classList.remove('bg-dark');
                 }
 
-                /* Ativa link do menu correspondente à seção visível */
+                /* Activate corresponding menu link for visible section */
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${entry.target.id}`) {
@@ -34,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-    }, { threshold: 0.5 }); /* Threshold 50%: ativa quando metade da seção está visível */
+    }, { threshold: 0.5 }); /* Threshold 50%: triggers when half of the section is visible */
 
     /* =========================================
-    NAVBAR SCROLL FOLLOW - Portfolio → Contato (Transição Natural)
+    NAVBAR SCROLL FOLLOW - Portfolio → Contact (Natural Transition)
     ========================================= */
-    /* Navbar "sobe" suavemente conforme final do Portfolio entra na viewport */
+    /* Navbar "moves up" smoothly as end of Portfolio enters viewport */
     const navbar = document.querySelector('header');
     const portfolioSection = document.getElementById('projects');
     let ticking = false;
@@ -72,75 +74,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* Listeners passivos para performance 60fps */
+    /* Passive listeners for 60fps performance */
     window.addEventListener('scroll', requestTick, { passive: true });
     window.addEventListener('resize', requestTick, { passive: true });
 
     sections.forEach(s => observer.observe(s));
 
     /* =========================================
-    3. DADOS DOS PROJETOS (Para Modais)
+    3. PROJECT DATA (For Modals)
     ========================================= */
-    /* Objeto com conteúdo dos 3 projetos exibido nos modais */
-    const projectContent = {
+    /* Object with content for the 3 projects displayed in modals */
+    const getProjectContent = () => ({
         "green-ai": {
-            title: "Green AI & Soberania Digital",
-            tags: "Pesquisa | Edge Computing | LLM Optimization",
-            desc: `
-                <p>Estamos vivendo a lua de mel da IA Generativa, mas os custos operacionais de inferência estão sendo ignorados. Minha pesquisa atual foca na Viabilidade Econômica de LLMs. Investigo técnicas de otimização (como Quantização e Poda) para rodar modelos de linguagem em infraestrutura local (Edge Computing), reduzindo drasticamente o consumo de energia e a latência.</p>
-                <p>O objetivo é estratégico: garantir a Soberania Digital. Ao mover a inteligência para a borda (on-device), eliminamos a dependência de APIs estrangeiras instáveis e protegemos a privacidade dos dados sensíveis, provando que a IA pode ser, ao mesmo tempo, 'Verde' e financeiramente sustentável.</p>
-            `
+            title: window.i18n.getText("modal.green.title"),
+            tags: window.i18n.getText("modal.green.tags"),
+            desc: window.i18n.getText("modal.green.desc")
         },
         "baco-uno": {
-            title: "O Paradoxo da Escolha (BACO)",
-            tags: "Startup | Sistema de Recomendação | Economia Comportamental",
-            desc: `
-                <p>Em 2019, fundei a BACO com uma tese central: o excesso de dados não estruturados gera ansiedade, não decisões (O Paradoxo da Escolha). Enquanto o mercado focava em volume, desenhei a arquitetura de um Sistema de Recomendação Híbrido que utilizava dados psicográficos para 'curar' experiências, atuando como um filtro de ruído para o usuário final.</p>
-                <p>O projeto, finalista em concursos de inovação, foi meu laboratório de Human-in-the-Loop. Aprendi na prática a estruturar pipelines de dados qualitativos e a validar modelos de negócio SaaS. Essa experiência moldou minha visão atual sobre Agentes de IA: a função da tecnologia deve ser reduzir a carga cognitiva humana, entregando precisão em vez de alucinação.</p>
-            `
+            title: window.i18n.getText("modal.baco.title"),
+            tags: window.i18n.getText("modal.baco.tags"),
+            desc: window.i18n.getText("modal.baco.desc")
         },
         "d4r": {
-            title: "Consultoria Data-Driven (D4R)",
-            tags: "Business Intelligence | Transformação Digital | Automação",
-            desc: `
-                <p>Como cofundador da D4R em Portugal, atuei na linha de frente da digitalização de empresas tradicionais. Minha missão era preparar o terreno cultural e técnico para a tecnologia. Implementei rotinas de Business Intelligence e automações de processos que permitiram a gestores tomarem decisões baseadas em evidências (P&L e Fluxo de Caixa), e não apenas em intuição.</p>
-                <p>Este case prova minha capacidade de traduzir 'tecnês' para resultados de negócio. Ao estruturar a governança de dados e otimizar operações ineficientes, criei as bases necessárias para que esses negócios pudessem escalar, demonstrando que a transformação digital real começa na estratégia e nos processos, antes de chegar ao software.</p>
-            `
+            title: window.i18n.getText("modal.d4r.title"),
+            tags: window.i18n.getText("modal.d4r.tags"),
+            desc: window.i18n.getText("modal.d4r.desc")
         }
-    };
+    });
+    
+    // Update currently open modal when language changes
+    window.addEventListener('languageChanged', () => {
+        if (modal.classList.contains('active')) {
+            const activeProjectId = modal.getAttribute('data-active-project');
+            if (activeProjectId) openModal(activeProjectId);
+        }
+    });
 
     /* =========================================
-    4. LÓGICA DO MODAL INTERATIVO
+    4. INTERACTIVE MODAL LOGIC
     ========================================= */
     
-    /* Seletores dos elementos do modal */
+    /* Selectors for modal elements */
     const modal = document.getElementById('project-modal');
     const mTitle = document.getElementById('modal-title');
     const mTags = document.getElementById('modal-tags');
     const mDesc = document.getElementById('modal-desc');
     const closeBtn = document.querySelector('.modal-close');
-    const cards = document.querySelectorAll('.card'); /* Todos os cards do portfólio */
+    const cards = document.querySelectorAll('.card'); /* All portfolio cards */
 
-    /* Função para abrir modal com dados do projeto clicado */
+    /* Function to open modal with clicked project data */
     function openModal(projectId) {
-        const data = projectContent[projectId];
+        const data = getProjectContent()[projectId];
+        modal.setAttribute('data-active-project', projectId);
         
-        if(!data) return; /* Proteção se projeto não existir */
+        if(!data) return; /* Protection if project doesn't exist */
 
-        /* Preenche conteúdo dinamicamente */
+        /* Dynamically populate content */
         mTitle.textContent = data.title;
         mTags.textContent = data.tags;
-        mDesc.innerHTML = data.desc; /* innerHTML para HTML nos parágrafos */
+        mDesc.innerHTML = data.desc; /* innerHTML for HTML in paragraphs */
 
-        modal.classList.add('active'); /* Animação CSS */
+        modal.classList.add('active'); /* CSS Animation */
     }
 
-    /* Função para fechar modal */
+    /* Function to close modal */
     function closeModal() {
         modal.classList.remove('active');
     }
 
-    /* Event listeners para cada card */
+    /* Event listeners for each card */
     cards.forEach(card => {
         card.addEventListener('click', () => {
             const projectId = card.getAttribute('data-project');
@@ -148,23 +150,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* Fechamento do modal: botão X, clique no fundo ou ESC */
+    /* Modal closing: X button, background click, or ESC */
     if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
     }
     
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal(); /* Clique fora do conteúdo */
+        if (e.target === modal) closeModal(); /* Click outside content */
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal(); /* Tecla ESC */
+        if (e.key === 'Escape') closeModal(); /* ESC Key */
     });
 
     /* =========================================
-    5. FORMULÁRIO CONTATO - VALIDAÇÃO + SIMULAÇÃO ENVIO
+    5. CONTACT FORM - VALIDATION + FORMSPREE SUBMISSION
     ========================================= */
-    /* Validação client-side obrigatória pela atividade + simulação de backend */
+    /* Client-side validation + Formspree backend integration */
     
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.createElement('div');
@@ -172,43 +174,75 @@ document.addEventListener('DOMContentLoaded', () => {
     formSuccess.innerHTML = '✅ Mensagem enviada com sucesso! Em breve entrarei em contato.';
     formSuccess.style.display = 'none';
     
-    /* Insere mensagem de sucesso dinamicamente após botão submit */
+    /* Inserts success message dynamically after submit button */
     const submitBtn = contactForm.querySelector('.btn-submit');
     submitBtn.insertAdjacentElement('afterend', formSuccess);
 
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); /* Impede envio real do form */
+        e.preventDefault(); /* Prevent default form submission */
         
-        /* Captura e valida campos */
+        /* Capture and validate fields */
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
         
-        /* Validações obrigatórias (requisito da atividade) */
+        /* Required validations */
         if (!name) {
-            alert('Por favor, preencha o campo Nome.');
+            alert(window.i18n.getText('form.alert.name'));
             return;
         }
         
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; /* Regex simples para email */
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; /* Simple regex for email */
         if (!emailRegex.test(email)) {
-            alert('Por favor, insira um e-mail válido.');
+            alert(window.i18n.getText('form.alert.email'));
             return;
         }
         
         if (!message || message.length < 10) {
-            alert('Por favor, escreva uma mensagem com pelo menos 10 caracteres.');
+            alert(window.i18n.getText('form.alert.message'));
             return;
         }
         
-        /* Simula sucesso: limpa form + mostra confirmação */
-        contactForm.reset();
-        formSuccess.style.display = 'block';
+        /* Submit via Fetch to Formspree */
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
         
-        setTimeout(() => {
-            formSuccess.style.display = 'none';
-        }, 5000); /* Auto-esconde após 5s */
+        const formData = new FormData(contactForm);
         
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            
+            if (response.ok) {
+                contactForm.reset();
+                formSuccess.innerHTML = window.i18n.getText("form.success");
+                formSuccess.style.display = 'block';
+                formSuccess.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    formSuccess.style.display = 'none';
+                }, 5000); /* Auto-hide after 5s */
+                
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Oops! There was a problem submitting your form");
+                    }
+                })
+            }
+        }).catch(error => {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            alert("Oops! There was a problem submitting your form");
+        });
     });
 });
