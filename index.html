@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 <body>
     <div id="bg-global"></div>
 
-    <!-- Definições SVG ocultas: Filtro de textura para otimização visual dos cards do portfólio -->
+    <!-- Hidden SVG definitions: Texture filter for portfolio card visual optimization -->
     <svg style="display: none;">
         <defs>
             <filter id="paper-texture-filter" x="-3" y="-3" width="321" height="507" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -32,7 +32,7 @@
         </defs>
     </svg>
 
-    <!-- Cabeçalho com menu de navegação fixa (bottom/top responsivo) -->
+    <!-- Header with fixed navigation menu (responsive bottom/top) -->
     <header>
         <nav>
             <ul>
@@ -63,7 +63,7 @@
             </div>
         </section>
 
-        <!-- Seção Sobre Mim: Apresentação pessoal e trajetória profissional -->
+        <!-- About Me Section: Personal presentation and professional journey -->
         <section id="about" class="slide dark-theme">
             <div class="container split-layout">
                 <div class="col-visual">
@@ -78,11 +78,11 @@
             </div>
         </section>
 
-        <!-- FORMAÇÃO -->
+        <!-- EDUCATION -->
         <section id="education" class="slide light-theme">
             <div class="container split-layout align-top">
                 
-                <!-- Coluna Esquerda: Acadêmico -->
+                <!-- Left Column: Academic -->
                 <div class="col-list">
                     <div class="edu-item">
                         <h3 data-i18n="edu.ufmg">Ciências Econômicas - UFMG</h3>
@@ -96,13 +96,13 @@
                         <h3 data-i18n="edu.ibm">Professional Certificate - IBM Data Science</h3>
                         <span>2019 - 2020</span>
                     </div>
-                    <!-- Botão Esquerdo -->
+                    <!-- Left Button -->
                     <a href="https://www.credly.com/users/htex/badges#credly" target="_blank" class="btn-primary">
                         <span data-i18n="edu.btn1">Verifique minhas certificações aqui</span>
                     </a>
                 </div>
 
-                <!-- Coluna Direita: Stack -->
+                <!-- Right Column: Tech Stack -->
                 <div class="col-stack">
                     <h2 data-i18n="edu.core">Core Data Science</h2>
                     <div class="stack-icons">
@@ -128,14 +128,14 @@
                         <img src="assets/Google_Cloud_logo.svg" alt="GCP">
                     </div>
                     
-                    <!-- Botão Direito -->
+                    <!-- Right Button -->
                     <a href="https://www.credly.com/users/htex/skills" target="_blank" class="btn-primary">
                         <span data-i18n="edu.btn2">Verifique minhas habilidades aqui</span>
                     </a>
                 </div>
             </div>
         </section>
-        <!-- Seção Portfólio: Projetos e trabalhos realizados com modais interativos -->
+        <!-- Portfolio Section: Projects with interactive modals -->
         <section id="projects" class="slide dark-theme">
             <div class="container">
                 <div class="portfolio-grid">
@@ -186,7 +186,7 @@
             </div>
         </section>
 
-        <!-- Seção Contato: Formulário validado com JS + links sociais -->
+        <!-- Contact Section: JS-validated form + social links -->
         <section id="contact" class="slide light-theme">
             <div class="container contact-container">
                 <h2 data-i18n="contact.h2">Vamos conversar?</h2>
@@ -246,7 +246,7 @@
         </section>
     </main>
     
-    <!-- Modal interativo para detalhes dos projetos do portfólio -->
+    <!-- Interactive modal for portfolio project details -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close">&times;</button>
@@ -258,7 +258,7 @@
         </div>
     </div>
 
-    <!-- Script principal com navegação suave, modais e validação de formulário -->
+    <!-- Core scripts: i18n, smooth navigation, modals, and form validation -->
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
