@@ -1,87 +1,87 @@
-# Portfólio Pessoal - Henrique Daniel Abreu Teixeira
+# Henrique Teixeira — Personal Website
 
-## 📋 **Atividade Prática: Fundamentos da Programação Web**
+## Professional Data Scientist Portfolio
 
-**Disciplina:** Fundamentos da Programação Web  
-**Aluno:** Henrique Daniel Abreu Teixeira (RA: 5284197)  
-**Data:** Dezembro/2025  
+This repository contains my **personal online portfolio**. The site was created using **vanilla HTML5, CSS3, and JavaScript** (without frameworks), and is published on **GitHub Pages**.
 
-Este repositório contém meu **portfólio pessoal online**, desenvolvido conforme os requisitos da atividade prática da disciplina. O site foi criado utilizando **apenas HTML5, CSS3 e JavaScript puro** (sem frameworks), e está publicado no **GitHub Pages**.
+### 🔗 **Links**
+- **Live Site:** [https://iketx.github.io/henrique-teixeira/](https://iketx.github.io/henrique-teixeira/)
+- **GitHub Repository:** [https://github.com/Iketx/henrique-teixeira](https://github.com/Iketx/henrique-teixeira)
 
-### 🔗 **Links Obrigatórios**
-- **Site Publicado:** [https://iketx.github.io/henrique-teixeira/](https://iketx.github.io/henrique-teixeira/)
-- **Repositório GitHub:** [https://github.com/Iketx/henrique-teixeira](https://github.com/Iketx/henrique-teixeira)
+## 🛠️ **Tech Stack**
+- **HTML5**: Semantic structure with anchor sections for single-page navigation.
+- **CSS3**: Responsive layouts (Flexbox/Grid), smooth animations, CSS variables, mix-blend-mode, and transitions.
+- **JavaScript (Vanilla)**: IntersectionObserver (active navigation + theme switching), form validation, interactive modals, scroll-follow navbar, and i18n system.
 
-## 🛠️ **Tecnologias Utilizadas**
-- **HTML5**: Estrutura semântica com seções âncora para navegação single-page.
-- **CSS3**: Layouts responsivos (Flexbox/Grid), animações suaves, variáveis CSS, mix-blend-mode e transições.
-- **JavaScript (Vanilla)**: IntersectionObserver (navegação ativa + troca de tema), validação de formulário, modais interativos, scroll-follow da navbar.
+**Built with pride using vanilla HTML, CSS, and JavaScript.**
 
-**Proibições respeitadas:** Sem Bootstrap, jQuery, React ou qualquer framework/biblioteca.
-
-## 📁 **Estrutura do Projeto**
+## 📁 **Project Structure**
 ```
 SITE_PORTFOLIO/
-├── index.html          # Página única com 5 seções (Hero + 4 obrigatórias)
+├── index.html          # Single page with 5 sections (Hero + 4 core sections)
 ├── assets/
 │   ├── css/
-│   │   └── styles.css  # Estilos comentados e organizados por seção
+│   │   └── styles.css  # Styles organized by section
 │   ├── js/
-│   │   └── scripts.js  # Lógica JS didática e comentada
-│   └── [imagens/ícones] # Assets visuais (foto, logos tech)
-└── README.md           # Esta documentação
+│   │   ├── lang/       # i18n language files
+│   │   ├── i18n.js     # i18n logic module
+│   │   └── scripts.js  # Core JS logic
+│   └── [images/icons]  # Visual assets (photo, tech logos)
+└── README.md           # This documentation
 ```
 
-## ✨ **Funcionalidades Implementadas**
+## ✨ **Features**
 
-### 1. **Navegação Single-Page (Âncoras)**
-- Menu fixo responsivo (bottom → top suave na transição Portfolio → Contato).
-- **IntersectionObserver**: Ativa link correspondente + troca tema claro/escuro automaticamente.
+### 1. **Single-Page Navigation (Anchors)**
+- Responsive fixed menu (bottom → top smooth transition during Portfolio → Contact scroll).
+- **IntersectionObserver**: Activates corresponding link + automatically switches light/dark theme.
 
-### 2. **Seções Obrigatórias**
-- **Hero**: Apresentação impactante com tipografia VH responsiva.
-- **Sobre Mim**: Foto + texto biográfico (split-layout grid).
-- **Formação**: Formação acadêmica + stack tech (ícones SVG).
-- **Portfólio**: 3 cards interativos com modais (detalhes via JS).
-- **Contato**: Formulário validado + links sociais.
+### 2. **Core Sections**
+- **Hero**: Impactful presentation with responsive typography.
+- **About Me**: Photo + biographical text (split-layout grid).
+- **Education**: Academic background + tech stack (SVG icons).
+- **Portfolio**: 3 interactive cards with modals (details via JS).
+- **Contact**: Validated form + social links.
 
-### 3. **JavaScript Obrigatório**
-- **Validação Formulário**: Nome, e-mail (regex), mensagem (>10 chars).
-- **Simulação Envio**: Limpa campos + alerta verde (5s).
-- **Modais Portfólio**: Clique em card → modal com conteúdo dinâmico.
-- **Navbar Animada**: Scroll-follow 60fps (requestAnimationFrame).
+### 3. **JavaScript Interactions**
+- **Form Validation**: Name, e-mail (regex), message (>10 chars).
+- **Formspree Integration**: Contact form connected to Formspree API for real submissions.
+- **Portfolio Modals**: Click on card → modal with dynamic content.
+- **Animated Navbar**: Scroll-follow 60fps (requestAnimationFrame).
+- **i18n System**: English and Portuguese language support with localStorage persistence.
 
-### 4. **Responsividade**
-- Mobile-first: Grid flexível, fontes VW/VH, stack vertical em telas pequenas.
-- Testado em desktop/tablet/smartphone.
+### 4. **Responsiveness**
+- Mobile-first: Flexible grid, responsive scaling, vertical stack on small screens.
+- Full breakpoints (480px, 768px, 1024px, 1440px+).
 
-## 🚀 **Como Executar Localmente**
-1. Clone o repositório:
-   ```
+## 🚀 **How to Run Locally**
+1. Clone the repository:
+   ```bash
    git clone https://github.com/Iketx/henrique-teixeira.git
    cd henrique-teixeira
    ```
-2. Abra `index.html` no navegador:
-   ```
+2. Open `index.html` in your browser:
+   ```bash
    xdg-open index.html  # Linux
-   # ou arraste para o navegador
+   open index.html      # macOS
+   start index.html     # Windows
+   # or drag and drop into the browser
    ```
 
-## 📱 **Demonstração das Seções**
+### Formspree setup
+To make the contact form work for you:
+1. Sign up at [Formspree](https://formspree.io/)
+2. Create a new form
+3. Replace `YOUR_FORM_ID` in `index.html` with your Formspree form ID.
 
-1. **Hero/Sobre Mim**
-2. **Formação**
-3. **Portfólio** (cards + modal)
-4. **Contato** (formulário validado)
+## 📱 **Section Walkthrough**
 
+1. **Hero/About Me**
+2. **Education**
+3. **Portfolio** (cards + modal)
+4. **Contact** (validated form)
 
-## 📚 **Conceitos Aprendidos e Aplicados**
-- **CSS Grid/Flexbox**: Layouts complexos sem frameworks.
-- **IntersectionObserver API**: Detecção eficiente de visibilidade.
-- **Custom Properties**: Manutenção fácil de temas.
-- **Performance**: RAF + passive listeners (60fps scroll).
-- **Acessibilidade**: Labels, alt texts, foco keyboard.
+---
 
-**Obrigado pela avaliação!**  
 Henrique Teixeira  
 [LinkedIn](https://www.linkedin.com/in/henrique-teixeira-data-science) | [GitHub](https://github.com/Iketx)
