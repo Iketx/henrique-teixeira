@@ -1,7 +1,7 @@
 /* ========================================= */
-/* 1. VARIÁVEIS CSS GLOBAIS (Custom Properties) */
+/* 1. GLOBAL CSS VARIABLES (Custom Properties) */
 /* ========================================= */
-/* Definição das cores principais e fontes usadas em todo o site para fácil manutenção */
+/* Core color definitions and fonts used throughout the site for easy maintenance */
 :root {
   --bg-claro: #F3EEE0;
   --bg-escuro: #1F1C14;
@@ -33,14 +33,14 @@ ul { list-style: none; }
 .bg-dark { background-color: var(--bg-escuro) !important; }
 
 /* ========================================= */
-/* 2. ESTRUTURA DAS SEÇÕES (SLIDES FULLSCREEN) */
+/* 2. SECTION STRUCTURE (FULLSCREEN SLIDES) */
 /* ========================================= */
-/* Cada seção ocupa 100vh para navegação single-page suave */
+/* Each section occupies 100vh for smooth single-page navigation */
 .slide {
   width: 100vw;
   height: auto;
   min-height: 100vh;
-  /* Padding lateral padrão (exceto Hero) para centralização do conteúdo */
+  /* Default lateral padding (except Hero) for content centering */
   padding: 80px 5%; 
   display: flex;
   flex-direction: column;
@@ -54,20 +54,20 @@ ul { list-style: none; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; }
 
 /* ========================================= */
-/* 3. SEÇÃO HERO (Página Inicial) */
+/* 3. HERO SECTION (Homepage) */
 /* ========================================= */
-/* Layout em grid especial para tipografia responsiva baseada em VH */
+/* Special grid layout for VH-based responsive typography */
 #hero.hero-grid-layout {
-    padding: 0; /* Sem padding lateral - usa grid para posicionamento preciso */
+    padding: 0; /* No lateral padding - uses grid for precise positioning */
     display: grid;
-    grid-template-rows: 1fr 120px; /* Espaço reservado para navbar inferior */
+    grid-template-rows: 1fr 120px; /* Reserved space for bottom navbar */
     grid-auto-columns: 1fr;
     grid-auto-flow: row;
 }
 
 .hero-area {
     display: grid;
-    /* Lógica exata de proporção VH solicitada */
+    /* Exact requested VH proportion logic */
     grid-template-columns: 1fr 84.7982vh 1fr;
     grid-template-rows: 1fr auto 1fr;
     grid-template-areas: ". . ." ". hero-text ." ". . .";
@@ -82,7 +82,7 @@ ul { list-style: none; }
     justify-content: center;
 }
 
-/* Tipografia Baseada em VH (Design Philosophy) */
+/* VH-Based Typography (Design Philosophy) */
 .hero-text-wrapper h1 {
     font-family: "DM Sans", sans-serif;
     font-size: clamp(2.5rem, 10.22vh, 8rem);
@@ -109,7 +109,7 @@ ul { list-style: none; }
     color: var(--texto-escuro);
 }
 
-/* Proteção para Mobile Portrait (onde VH quebra a largura) */
+/* Protection for Mobile Portrait (where VH breaks width) */
 @media (max-width: 1024px) {
     .hero-area { grid-template-columns: 5% 90% 5%; }
 }
@@ -120,9 +120,9 @@ ul { list-style: none; }
 }
 
 /* ========================================= */
-/* 4. LAYOUTS EM DUAS COLUNAS (Sobre Mim e Formação) */
+/* 4. TWO-COLUMN LAYOUTS (About Me and Education) */
 /* ========================================= */
-/* Grid 50/50 para seções com imagem + texto ou listas */
+/* 50/50 Grid for sections with image + text or lists */
 .split-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -130,7 +130,7 @@ ul { list-style: none; }
   align-items: center;
 }
 
-/* Alinhamento no topo para formação, para botões alinharem se conteúdo variar */
+/* Top alignment for education, so buttons align if content varies */
 .align-top { align-items: start; }
 
 .col-visual img.profile-photo {
@@ -144,11 +144,11 @@ ul { list-style: none; }
 .col-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
 .col-text p { font-family: var(--font-mono); margin-bottom: 1rem; line-height: 1.5; }
 
-/* === FORMAÇÃO (BOTÕES CORRIGIDOS) === */
+/* === EDUCATION (CORRECTED BUTTONS) === */
 .col-list, .col-stack {
     display: flex;
     flex-direction: column;
-    /* Garante que ocupem a altura necessária */
+    /* Ensures they occupy necessary height */
     height: 100%; 
 }
 
@@ -166,7 +166,7 @@ ul { list-style: none; }
 }
 .stack-icons img { height: 3rem; width: auto; }
 
-/* Estilo unificado para os dois botões */
+/* Unified style for both buttons */
 .btn-primary {
     background-color: var(--texto-escuro);
     color: var(--texto-claro);
@@ -175,7 +175,7 @@ ul { list-style: none; }
     font-size: 1.2rem;
     padding: 1rem;
     text-align: center;
-    width: 100%; /* Ocupa largura da coluna */
+    width: 100%; /* Occupies column width */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,9 +186,9 @@ ul { list-style: none; }
 .btn-primary:hover { opacity: 0.9; }
 
 /* ========================================= */
-/* 5. GRID DE CARDS DO PORTFÓLIO */
+/* 5. PORTFOLIO CARDS GRID */
 /* ========================================= */
-/* Cards clicáveis com SVG texturizado e modais */
+/* Clickable cards with textured SVG and modals */
 .portfolio-grid {
     display: flex;
     justify-content: center;
@@ -218,7 +218,7 @@ ul { list-style: none; }
     display: flex; flex-direction: column;
     justify-content: center; align-items: center;
     text-align: center; padding: 2rem;
-    color: var(--texto-escuro); /* Sempre escuro no cartão */
+    color: var(--texto-escuro); /* Always dark on the card */
 }
 
 .card-content h3 { font-family: var(--font-mono); font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; }
@@ -226,9 +226,9 @@ ul { list-style: none; }
 .card-content p { font-size: 0.95rem; font-weight: 500; }
 
 /* ========================================= */
-/* 6. NAVBAR FIXA RESPONSIVA (Bottom → Top) */
+/* 6. RESPONSIVE FIXED NAVBAR (Bottom → Top) */
 /* ========================================= */
-/* Transição suave durante scroll Portfolio → Contato */
+/* Smooth transition during Portfolio → Contact scroll */
 header {
   position: fixed; 
   bottom: 40px; 
@@ -238,7 +238,7 @@ header {
   z-index: 1000;
   display: flex; 
   justify-content: center;
-  mix-blend-mode: difference; /* Inverte cores conforme fundo */
+  mix-blend-mode: difference; /* Inverts colors according to background */
   color: #fff;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -261,7 +261,7 @@ nav a:hover:not(.active)::after { width: calc(100% - 32px); }
 nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700; }
 
 /* ========================================= */
-/* 7. MODAL INTERATIVO (Detalhes Projetos) */
+/* 7. INTERACTIVE MODAL (Project Details) */
 /* ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -284,7 +284,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
 #modal-title { font-family: var(--font-alt); margin-bottom: 0.5rem; border-bottom: 2px solid; padding-bottom: 10px; }
 #modal-tags { font-family: var(--font-mono); font-size: 0.8rem; display: block; margin-bottom: 1.5rem; }
 
-/* RESPONSIVO */
+/* RESPONSIVE */
 @media (min-width: 1440px) {
     .container { max-width: 1400px; }
 }
@@ -310,12 +310,12 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     .stack-icons img { height: 2.5rem; }
 }
 /* ========================================= */
-/* 8. SEÇÃO CONTATO (Layout Flex Completo) */
+/* 8. CONTACT SECTION (Full Flex Layout) */
 /* ========================================= */
 .contact-container {
     text-align: center;
     max-width: 800px;
-    height: calc(100vh - 160px); /* Ajuste para navbar */
+    height: calc(100vh - 160px); /* Adjustment for navbar */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -350,7 +350,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     width: 170px;
     padding: 0.8rem;
     
-    /* Estilo Visual */
+    /* Visual Style */
     background-color: transparent;
     border: 2px solid var(--texto-escuro);
     color: var(--texto-escuro);
@@ -371,7 +371,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Responsividade Contato */
+/* Contact Responsiveness */
 @media (max-width: 600px) {
     .contact-container h2 { font-size: 2.2rem; }
     .contact-links { flex-direction: column; align-items: center; margin-top: 2rem; }
@@ -379,7 +379,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
 }
 
 /* ========================================= */
-/* 9. FORMULÁRIO VALIDADO COM JS */
+/* 9. JS VALIDATED FORM */
 /* ========================================= */
 
 .contact-form {
@@ -461,7 +461,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     transform: translateY(-1px);
 }
 
-/* Mensagem de sucesso (será mostrada via JS) */
+/* Success message (will be shown via JS) */
 .form-success {
     background: #4CAF50;
     color: white;
@@ -473,7 +473,7 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     text-align: center;
 }
 
-/* Responsivo para Formulário */
+/* Form Responsive */
 @media (max-width: 768px) {
     .contact-form {
         padding: 0 2rem;
@@ -491,4 +491,28 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
         padding: 1.1rem;
         font-size: 1rem;
     }
+}
+
+/* ========================================= */
+/* 10. LANGUAGE SWITCHER */
+/* ========================================= */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.lang-switcher button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 0;
+    transition: opacity 0.3s;
+}
+.lang-switcher button.active, .lang-switcher button:hover {
+    opacity: 1;
+    font-weight: 700;
 }
