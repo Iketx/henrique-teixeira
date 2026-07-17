@@ -38,10 +38,10 @@ ul { list-style: none; }
 /* Cada seção ocupa 100vh para navegação single-page suave */
 .slide {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   min-height: 100vh;
   /* Padding lateral padrão (exceto Hero) para centralização do conteúdo */
-  padding: 0 5%; 
+  padding: 80px 5%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,7 +85,7 @@ ul { list-style: none; }
 /* Tipografia Baseada em VH (Design Philosophy) */
 .hero-text-wrapper h1 {
     font-family: "DM Sans", sans-serif;
-    font-size: 10.22vh; /* Restaurado */
+    font-size: clamp(2.5rem, 10.22vh, 8rem);
     font-weight: 900;
     line-height: 1.0;
     margin: 0;
@@ -94,7 +94,7 @@ ul { list-style: none; }
 
 .hero-text-wrapper h2 {
     font-family: "Kode Mono", monospace;
-    font-size: 4.7vh; /* Restaurado */
+    font-size: clamp(1.2rem, 4.7vh, 3.5rem);
     font-weight: 400;
     line-height: 1.2;
     margin: 0;
@@ -103,18 +103,20 @@ ul { list-style: none; }
 
 .hero-text-wrapper p {
     font-family: "DM Sans", sans-serif;
-    font-size: 2.11vh; /* Restaurado */
+    font-size: clamp(0.9rem, 2.11vh, 1.5rem);
     font-weight: 200;
     margin-top: 2vh;
     color: var(--texto-escuro);
 }
 
 /* Proteção para Mobile Portrait (onde VH quebra a largura) */
-@media (orientation: portrait) {
-    .hero-area { grid-template-columns: 1fr 90vw 1fr; }
-    .hero-text-wrapper h1 { font-size: 12vw; }
-    .hero-text-wrapper h2 { font-size: 5vw; }
-    .hero-text-wrapper p  { font-size: 3.5vw; }
+@media (max-width: 1024px) {
+    .hero-area { grid-template-columns: 5% 90% 5%; }
+}
+@media (max-width: 768px) {
+    .hero-text-wrapper h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+    .hero-text-wrapper h2 { font-size: clamp(1.2rem, 5vw, 2rem); margin-top: 1rem; }
+    .hero-text-wrapper p  { font-size: clamp(0.9rem, 3.5vw, 1.2rem); margin-top: 1rem; }
 }
 
 /* ========================================= */
@@ -159,6 +161,8 @@ ul { list-style: none; }
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 .stack-icons img { height: 3rem; width: auto; }
 
@@ -194,7 +198,8 @@ ul { list-style: none; }
 
 .card {
     position: relative;
-    width: 19.3125rem; /* Mantido original */
+    width: 100%;
+    max-width: 19.3125rem;
     height: 30.875rem;
     cursor: pointer;
     transition: transform 0.3s;
@@ -280,10 +285,29 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
 #modal-tags { font-family: var(--font-mono); font-size: 0.8rem; display: block; margin-bottom: 1.5rem; }
 
 /* RESPONSIVO */
+@media (min-width: 1440px) {
+    .container { max-width: 1400px; }
+}
+@media (max-width: 1024px) {
+    .split-layout { gap: 2rem; }
+    .col-text h2 { font-size: 2rem; }
+    .portfolio-grid { gap: 2rem; }
+}
 @media (max-width: 768px) {
     .split-layout { grid-template-columns: 1fr; }
     .col-visual img.profile-photo { width: 70%; margin-bottom: 2rem; }
     .stack-icons { justify-content: center; gap: 2rem; }
+    .modal-container { width: 95%; padding: 2rem; }
+    nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    nav a { font-size: 0.8rem; padding: 4px 8px; }
+}
+@media (max-width: 480px) {
+    .col-visual img.profile-photo { width: 90%; }
+    .contact-container h2 { font-size: 1.8rem; }
+    .btn-contact { width: 100%; max-width: none; }
+    .modal-container { padding: 1.5rem; }
+    .hero-area { grid-template-columns: 5% 90% 5%; }
+    .stack-icons img { height: 2.5rem; }
 }
 /* ========================================= */
 /* 8. SEÇÃO CONTATO (Layout Flex Completo) */
