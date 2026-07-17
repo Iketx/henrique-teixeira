@@ -392,22 +392,27 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
         box-shadow: 0 4px 24px rgba(0,0,0,0.35);
         transition: background 0.4s ease, box-shadow 0.4s ease;
     }
-    /* Light theme → light pill with dark text */
+    /* Pill on light sections → dark pill (inverted) */
     header.nav-light nav {
-        background: rgba(243, 238, 224, 0.9);
-        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    }
-    header.nav-light nav a { color: var(--texto-escuro); }
-    header.nav-light nav a.active {
-        background-color: var(--texto-escuro);
+        background: rgba(31, 28, 20, 0.88);
         color: var(--texto-claro);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     }
-    /* Dark theme → dark pill with light text */
-    header.nav-dark nav { color: var(--texto-claro); }
-    header.nav-dark nav a { color: var(--texto-claro); }
-    header.nav-dark nav a.active {
+    header.nav-light nav a { color: var(--texto-claro); }
+    header.nav-light nav a.active {
         background-color: #fff;
         color: #000;
+    }
+    /* Pill on dark sections → light pill (inverted) */
+    header.nav-dark nav {
+        background: rgba(243, 238, 224, 0.9);
+        color: var(--texto-escuro);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    header.nav-dark nav a { color: var(--texto-escuro); }
+    header.nav-dark nav a.active {
+        background-color: var(--texto-escuro);
+        color: var(--texto-claro);
     }
     /* Lang switcher inside pill */
     .lang-switcher button { font-size: 0.75rem; }
