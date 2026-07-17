@@ -22,9 +22,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (entry.target.classList.contains('dark-theme')) {
                     bgGlobal.classList.add('bg-dark');
                     bgGlobal.classList.remove('bg-light');
+                    header.classList.add('nav-dark');
+                    header.classList.remove('nav-light');
                 } else {
                     bgGlobal.classList.add('bg-light');
                     bgGlobal.classList.remove('bg-dark');
+                    header.classList.add('nav-light');
+                    header.classList.remove('nav-dark');
                 }
 
                 /* Activate corresponding menu link for visible section */

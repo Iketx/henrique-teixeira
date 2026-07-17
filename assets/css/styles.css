@@ -20,6 +20,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
@@ -46,6 +51,8 @@ ul { list-style: none; }
   flex-direction: column;
   justify-content: center;
   position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .light-theme { color: var(--texto-escuro); }
@@ -358,12 +365,58 @@ nav a.active { background-color: #fff; color: #000; opacity: 1; font-weight: 700
     .portfolio-grid { gap: 2rem; }
 }
 @media (max-width: 768px) {
+    /* Mobile slide height: use dynamic viewport + clear the navbar */
+    .slide {
+        min-height: 100dvh;
+        padding: 80px 5% 110px;
+    }
+
     .split-layout { grid-template-columns: 1fr; }
     .col-visual img.profile-photo { width: 70%; margin-bottom: 2rem; }
     .stack-icons { justify-content: center; gap: 2rem; }
     .modal-container { width: 95%; padding: 2rem; }
-    nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    nav a { font-size: 0.8rem; padding: 4px 8px; }
+    nav ul { gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    nav a { font-size: 0.75rem; padding: 4px 10px; }
+
+    /* Mobile navbar pill — solid inverted background, no blend mode */
+    header {
+        mix-blend-mode: normal;
+        bottom: 14px;
+    }
+    nav {
+        background: rgba(31, 28, 20, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-radius: 28px;
+        padding: 6px 10px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    /* Light theme → light pill with dark text */
+    header.nav-light nav {
+        background: rgba(243, 238, 224, 0.9);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    header.nav-light nav a { color: var(--texto-escuro); }
+    header.nav-light nav a.active {
+        background-color: var(--texto-escuro);
+        color: var(--texto-claro);
+    }
+    /* Dark theme → dark pill with light text */
+    header.nav-dark nav { color: var(--texto-claro); }
+    header.nav-dark nav a { color: var(--texto-claro); }
+    header.nav-dark nav a.active {
+        background-color: #fff;
+        color: #000;
+    }
+    /* Lang switcher inside pill */
+    .lang-switcher button { font-size: 0.75rem; }
+
+    /* Contact section — adapt height for mobile */
+    .contact-container {
+        height: auto;
+        min-height: calc(100dvh - 120px);
+    }
 }
 @media (max-width: 480px) {
     .col-visual img.profile-photo { width: 90%; }
